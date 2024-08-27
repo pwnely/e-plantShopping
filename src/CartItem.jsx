@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
+import '.cartslide.jsx';
+import {updateQuantity, removeItem, addItem} from 'cartslice.jsx';
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
@@ -9,28 +10,38 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => ({
-            totalCost += item.cost * item.quantity;
+        totalCost += item.cost * item.quantity;
         });
+
+     return calculateTotalCost;
   };
 
   const handleContinueShopping = (e) => {
-   
+   const handleclick = () => {
+    navigate('e-plantShopping/src/ProductList.jsx');
+   }
   };
 
-
+  const handleCheckoutShopping = (e) => {
+    alert('Functionality to be added for future reference');
+  };
 
   const handleIncrement = (item) => {
+    Dispatch(updateQuantity(index))
+
   };
 
   const handleDecrement = (item) => {
-   
+   Dispatch(removeItem(index))
   };
 
   const handleRemove = (item) => {
+    Dispatch(removeItem(index))
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
+    totalcost += item.cost * item.quantity
   };
 
   return (
@@ -43,7 +54,7 @@ const CartItem = ({ onContinueShopping }) => {
             <div className="cart-item-details">
               <div className="cart-item-name">{item.name}</div>
               <div className="cart-item-cost">{item.cost}</div>
-              <div className="cart-item-quantity">
+              <div className="cart-item-quantity"{updateQuantity}>
                 <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>-</button>
                 <span className="cart-item-quantity-value">{item.quantity}</span>
                 <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
