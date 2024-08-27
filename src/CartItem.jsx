@@ -54,7 +54,7 @@ const CartItem = ({ onContinueShopping }) => {
             <div className="cart-item-details">
               <div className="cart-item-name">{item.name}</div>
               <div className="cart-item-cost">{item.cost}</div>
-              <div className="cart-item-quantity"{updateQuantity}>
+              <div className="cart-item-quantity">
                 <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>-</button>
                 <span className="cart-item-quantity-value">{item.quantity}</span>
                 <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
@@ -73,7 +73,7 @@ const CartItem = ({ onContinueShopping }) => {
       </div>
     </div>
   );
-};
+
 
 export default CartItem;
 
