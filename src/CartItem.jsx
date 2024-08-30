@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './CartItem.css';
 
-import { updateQuantity, removeItem } from './CartSlice';
+import { updateQuantity, removeItem, addItem } from './CartSlice';
 import { useNavigate } from 'react-router-dom';
 
 const CartItem = () => {
