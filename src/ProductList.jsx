@@ -244,12 +244,16 @@ function ProductList() {
         if (e) {
             e.preventDefault();
         }
+        console.log (`Setting show cart: true`)
         setShowCart(true); // Set showCart to true when cart icon is clicked
+        
+        
     };
     const handlePlantsClick = (e) => {
         if (e) {
             e.preventDefault();
         }
+        console.log (`Setting show cart: false and show`)
         setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
         setShowCart(false); // Hide the cart when navigating to About Us
     };
@@ -301,6 +305,7 @@ function ProductList() {
                         </a></div>
                 </div>
             </div>
+            <CartItem onContinueShopping={handleContinueShopping}/>
             {!showCart ? (
                 <div className="product-grid">
                     {plantsArray.map((category, index) => (
@@ -329,7 +334,7 @@ function ProductList() {
 
                 </div>
             ) : (
-                <CartItem onContinueShopping={handleContinueShopping} />
+                
             )}
         </div>
     );
