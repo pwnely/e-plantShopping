@@ -305,7 +305,6 @@ function ProductList() {
                         </a></div>
                 </div>
             </div>
-            <CartItem onContinueShopping={handleContinueShopping}/>
             {!showCart ? (
                 <div className="product-grid">
                     {plantsArray.map((category, index) => (
@@ -334,7 +333,7 @@ function ProductList() {
 
                 </div>
             ) : (
-                
+                <CartItem onContinueShopping={handleContinueShopping}/>
             )}
         </div>
     );
