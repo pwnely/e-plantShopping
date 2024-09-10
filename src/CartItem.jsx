@@ -2,9 +2,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import './CartItem.css';
 import { updateQuantity, removeItem, } from './CartSlice';
-import { useNavigate } from 'react-router-dom';
 
-const CartItem = () => {
+
+const CartItem = ({onContinueShopping}) => {
+    if (typeof onContinueShopping !== 'function') {throw new Error(message,'onContinueShopping is required and must be a function');
+}
+
+
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
@@ -77,7 +81,7 @@ const CartItem = () => {
       </div>
       <div style={{ marginTop: '20px', color: 'black' }} className="total_cart_amount"></div>
       <div className="continue_shopping_btn">
-        <button className="get-started-button" onClick={handleContinueShopping}>
+        <button className="get-started-button" onClick={onContinueShopping}>
           Continue Shopping
         </button>
         <br />
