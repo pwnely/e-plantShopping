@@ -1,7 +1,7 @@
 
 import { useSelector, useDispatch } from 'react-redux';
 import './CartItem.css';
-import { updateQuantity, removeItem, } from './CartSlice';
+import { updateQuantity, removeItem, addItem, } from './CartSlice';
 
 
 const CartItem = ({onContinueShopping}) => {
@@ -27,19 +27,26 @@ const CartItem = ({onContinueShopping}) => {
   };
 
   const handleIncrement = (item) => {
-    dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 })); // Correct dispatch
-  };
+    console.log("incrementing item:", item.name, item.quantity)
+   
+    if (item.quantity >1 ){
+   
+        dispatch(addItem(item.name));
+
+      }
+ 
+};
 
   const handleDecrement = (item) => {
     if (item.quantity > 1) {
-      dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 })); // Correct dispatch
+      dispatch(updateQuantity({ id: item.name, quantity: item.quantity - 1 })); // Correct dispatch
     } else {
-      dispatch(removeItem(item.id)); 
+      dispatch(removeItem(item.name)); 
     }
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem(item.id));
+    dispatch(removeItem(item.name));
   };
 
   const calculateTotalCost = (item) => {
@@ -51,7 +58,7 @@ const CartItem = ({onContinueShopping}) => {
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
       <div>
         {cart.map((item) => (
-          <div className="cart-item" key={item.id}> {}
+          <div className="cart-item" key={item.name}> {}
             <img className="cart-item-image" src={item.image} alt={item.name} />
             <div className="cart-item-details">
               <div className="cart-item-name">{item.name}</div>
